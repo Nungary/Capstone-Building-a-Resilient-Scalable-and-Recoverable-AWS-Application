@@ -40,44 +40,15 @@ This project implements a resilient AWS architecture that:
 <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/d7adcdcc-60af-417e-b186-f079b0e94f2f" />
 
 
-
-Place your screenshots under `docs/screenshots/` and reference them here.
-
-### Screenshot naming convention
-
-Save your evidence images into `docs/screenshots/` using these filenames (or update the links below to match your names):
-
-- `01-vpc-subnets-primary.png`
-- `02-security-groups-primary.png`
-- `03-alb-primary.png`
-- `04-target-group-primary-healthy.png`
-- `05-asg-instances-primary.png`
-- `06-browser-primary-alb.png`
-- `07-rds-primary-multi-az.png`
-- `08-dynamodb-global-table.png`
-- `09-asg-scaling-policy.png`
-- `10-asg-activity-scale-out.png`
-- `11-ec2-scale-out.png`
-- `12-cloudwatch-alarmhigh.png`
-- `13-redis-replication-group.png`
-- `14-sqs-queues.png`
-- `15-ecs-service.png`
-- `16-ecs-tasks-scale-out.png`
-- `17-dr-vpc-subnets.png`
-- `18-dr-alb.png`
-- `19-browser-dr-alb.png`
-- `20-rds-dr-replica.png`
-- `21-route53-failover-records.png`
-- `22-cloudwatch-dashboard.png`
-- `23-cloudwatch-alarms.png`
-
 ### High Availability 
 
 - Default VPC subnets across 2+ AZs (primary region)
-  <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/714cb84c-b020-441e-9a66-be4da66326c8" />
+<img width="1412" height="873" alt="Screenshot 2026-05-29 093223" src="https://github.com/user-attachments/assets/8319644f-f3c6-4148-81dd-1d14fe0123c7" />
+
 
 - Security groups created (ALB / EC2 / RDS)
-  <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/e2e8ea64-b54b-4e4d-a7e6-f633a344b103" />
+ <img width="1919" height="957" alt="Screenshot 2026-05-29 094205" src="https://github.com/user-attachments/assets/4dd36031-8d68-4a8c-8ee7-5b7379304ad8" />
+
 
 - ALB created and healthy
   <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/7b1c7e26-3103-432a-bdab-b2df880ed199" />
@@ -111,25 +82,43 @@ Save your evidence images into `docs/screenshots/` using these filenames (or upd
 ### Scalability 
 
 - ASG target tracking policy created (`capstone-web-scaling-policy`)
+  <img width="1919" height="834" alt="Screenshot 2026-05-29 102555" src="https://github.com/user-attachments/assets/6b91670c-d7e6-417f-9247-f78fa8eec39e" />
+
 - Auto-created CloudWatch alarms (TargetTracking AlarmHigh/AlarmLow)
+  
+  <img width="1919" height="832" alt="Screenshot 2026-05-29 102650" src="https://github.com/user-attachments/assets/fc25fb3e-99ad-4a61-abf5-47c6b0993e66" />
+
 - Load test evidence:
   - ASG activity history showing scale-out events (DesiredCapacity increases)
+    
+    <img width="1919" height="950" alt="Screenshot 2026-05-29 112152" src="https://github.com/user-attachments/assets/6c99353f-94e0-4b64-a48d-4568c01ae5cc" />
+
   - EC2 instances list showing scale-out (2 → N)
-  - Optional: target group registering additional instances
+    
+    <img width="1919" height="954" alt="Screenshot 2026-05-29 112406" src="https://github.com/user-attachments/assets/ee23066a-dcd7-4a73-90e5-40ea8724a26a" />
+
 - Redis replication group created + status available
+  
+  <img width="1919" height="961" alt="Screenshot 2026-05-29 103830" src="https://github.com/user-attachments/assets/9622e797-3358-4617-a3b6-60f9baaab5b0" />
+
 - SQS main queue + DLQ created
+ 
+  <img width="1919" height="956" alt="Screenshot 2026-05-29 103715" src="https://github.com/user-attachments/assets/cd12527e-819c-4576-aa02-2ba7d4f87eb0" />
+
 - ECS service `capstone-worker` created
+  <img width="1919" height="954" alt="Screenshot 2026-05-29 103806" src="https://github.com/user-attachments/assets/ed0cc467-3066-432f-8c76-ea28d6fb812f" />
+
 - Worker scale-out evidence:
   - ECS Tasks view showing many tasks launched
-  - CloudWatch metrics for SQS depth and ECS service utilization
+    <img width="1919" height="956" alt="Screenshot 2026-05-29 113509" src="https://github.com/user-attachments/assets/8768e3bb-b301-4f5f-8100-91f79abfce34" />
 
 #### What is cached (ElastiCache) and why
 
 ElastiCache Redis is used to cache hot / frequently-read data (e.g., session lookups or repeated reads) to reduce repeated database calls to RDS. This improves latency during traffic spikes and protects the database tier from overload.
 
-#### Load test summary (short)
+#### Load test summary 
 
-Fill this in using your observations/screenshots:
+observations/screenshots:
 
 - **Web tier start:** ASG desired capacity = 2
 - **Web tier peak:** ASG desired capacity reached: ___ (e.g., 4 or 6)
