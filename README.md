@@ -212,8 +212,9 @@ During a failover drill, the Route 53 primary health check was forced to fail by
     <img width="1919" height="961" alt="Screenshot 2026-05-29 104959" src="https://github.com/user-attachments/assets/6d5c8c66-3109-45bc-9ea7-ff56ca0b0c86" />
 
 - CloudWatch dashboard created: `capstone-infrastructure`
+  
+<img width="1919" height="952" alt="image" src="https://github.com/user-attachments/assets/7da17eaf-4b53-4d6e-9ec1-23032aa84dae" />
 
-  <img width="1919" height="957" alt="Screenshot 2026-05-29 105156" src="https://github.com/user-attachments/assets/f5b25f16-fc91-4513-ad2f-79bbce3d3dd0" />
 
 
 #### Logs (for troubleshooting)
