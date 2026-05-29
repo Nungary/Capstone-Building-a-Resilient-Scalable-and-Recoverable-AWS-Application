@@ -197,20 +197,22 @@ During a failover drill, the Route 53 primary health check was forced to fail by
   <img width="1919" height="1079" alt="Screenshot 2026-05-29 141711" src="https://github.com/user-attachments/assets/1161bc4c-7e8e-42c9-9281-c7c0e9199505" />
  
 - **Observed downtime:**
-  <img width="1919" height="1079" alt="Screenshot 2026-05-29 140939" src="https://github.com/user-attachments/assets/c8579053-b1ab-4571-8825-46eccd27ce70" />
+  <img width="1919" height="1078" alt="Screenshot 2026-05-29 141358" src="https://github.com/user-attachments/assets/5cdfb550-7fb0-42a6-84c2-24b3e295c56e" />
 
-### Observability (Day 4)
+
+### Observability 
 
 - CloudWatch custom alarms created:
   - `capstone-alb-5xx-errors`
   - `capstone-alb-unhealthy-hosts`
   - `capstone-rds-high-cpu`
   - `capstone-sqs-message-age`
+    <img width="1919" height="961" alt="Screenshot 2026-05-29 104959" src="https://github.com/user-attachments/assets/6d5c8c66-3109-45bc-9ea7-ff56ca0b0c86" />
+
 - CloudWatch dashboard created: `capstone-infrastructure`
 
-![22-cloudwatch-dashboard](docs/screenshots/22-cloudwatch-dashboard.png)
+  <img width="1919" height="957" alt="Screenshot 2026-05-29 105156" src="https://github.com/user-attachments/assets/f5b25f16-fc91-4513-ad2f-79bbce3d3dd0" />
 
-![23-cloudwatch-alarms](docs/screenshots/23-cloudwatch-alarms.png)
 
 #### Logs (for troubleshooting)
 
@@ -223,12 +225,6 @@ Backup policies were configured using AWS Backup for:
 
 - **RDS** snapshots (schedule + retention)
 - **DynamoDB** backups (schedule + retention)
-
-Add screenshots under `docs/screenshots/`:
-
-- `24-aws-backup-vaults.png`
-- `25-aws-backup-plan.png`
-- `26-aws-backup-jobs.png`
 
 ## Repository Layout
 
@@ -247,8 +243,6 @@ Add screenshots under `docs/screenshots/`:
     └── screenshots/
         └── (put your evidence images here)
 ```
-
-## How to Reproduce (CLI Summary)
 
 A concise command log and resource IDs are captured in `lab.env`. The build followed these phases:
 
