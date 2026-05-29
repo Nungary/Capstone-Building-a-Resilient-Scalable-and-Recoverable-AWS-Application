@@ -13,10 +13,10 @@ This project implements a resilient AWS architecture that:
 - Supports **regional disaster recovery** using a **warm-standby** pattern in a secondary region.
 - Provides **observability** using **CloudWatch dashboard + alarms**.
 
-## Architecture (Logical)
+## Architecture 
 <img width="1081" height="761" alt="Untitled Diagram drawio" src="https://github.com/user-attachments/assets/c70b6b27-b79b-4649-a64c-940ad092a6d3" />
 
-![Architecture Diagram](docs/architecture-diagram.png)
+
 
 
 | Tier | Services | Resilience / Scaling mechanism |
@@ -39,7 +39,7 @@ This project implements a resilient AWS architecture that:
   
 <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/d7adcdcc-60af-417e-b186-f079b0e94f2f" />
 
-- **RDS Endpoint (Primary):** `capstone-mysql-primary.cb2wywyq61to.eu-west-1.rds.amazonaws.com`
+
 
 Place your screenshots under `docs/screenshots/` and reference them here.
 
@@ -71,35 +71,44 @@ Save your evidence images into `docs/screenshots/` using these filenames (or upd
 - `22-cloudwatch-dashboard.png`
 - `23-cloudwatch-alarms.png`
 
-### High Availability (Day 1)
+### High Availability 
 
 - Default VPC subnets across 2+ AZs (primary region)
+  <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/714cb84c-b020-441e-9a66-be4da66326c8" />
+
 - Security groups created (ALB / EC2 / RDS)
+  <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/e2e8ea64-b54b-4e4d-a7e6-f633a344b103" />
+
 - ALB created and healthy
+  <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/7b1c7e26-3103-432a-bdab-b2df880ed199" />
+
 - ASG created with 2 instances across 2 AZs
+  <img width="1919" height="960" alt="Screenshot 2026-05-29 095505" src="https://github.com/user-attachments/assets/a6147c3d-b709-4a95-9ded-8ad82fff4cbb" />
+
 - Target group shows healthy targets
+  <img width="1919" height="960" alt="Screenshot 2026-05-29 100240" src="https://github.com/user-attachments/assets/0ddb94ab-c3a1-4504-a985-93a0db81f61d" />
+
 - Browser proof: ALB serves the nginx page including Instance ID + AZ
+ <img width="1919" height="1022" alt="Screenshot 2026-05-29 095933" src="https://github.com/user-attachments/assets/35eddec6-d2fb-48ac-be0b-9a17df8e47fc" />
+
+ <img width="1919" height="1025" alt="Screenshot 2026-05-29 100035" src="https://github.com/user-attachments/assets/9efdee9a-5bf3-44f0-8f5f-05eec8e95cef" />
+
+ <img width="1654" height="1079" alt="Screenshot 2026-05-29 095736" src="https://github.com/user-attachments/assets/463e0847-af68-4f11-ba8d-69f1f112aaf6" />
+ 
+
 - RDS MySQL created with **Multi-AZ = Yes**
 - RDS Multi-AZ failover behavior documented (see `docs/dr/dr-runbook.md`)
+  
+  <img width="1919" height="955" alt="Screenshot 2026-05-29 102228" src="https://github.com/user-attachments/assets/f0e6262a-2946-4be9-b7c4-7832997c72cf" />
+
 - DynamoDB Global Table created (`eu-west-1` + replica in `eu-central-1`)
 
-![01-vpc-subnets-primary](docs/screenshots/01-vpc-subnets-primary.png)
+  <img width="1919" height="956" alt="Screenshot 2026-05-29 101301" src="https://github.com/user-attachments/assets/549eaf57-c9ec-4ecf-8038-b4bfc6eb09d8" />
 
-![02-security-groups-primary](docs/screenshots/02-security-groups-primary.png)
+<img width="1919" height="966" alt="Screenshot 2026-05-29 101519" src="https://github.com/user-attachments/assets/6907de9e-28c9-4ba0-acf1-f85081f071ae" />
 
-![03-alb-primary](docs/screenshots/03-alb-primary.png)
 
-![04-target-group-primary-healthy](docs/screenshots/04-target-group-primary-healthy.png)
-
-![05-asg-instances-primary](docs/screenshots/05-asg-instances-primary.png)
-
-![06-browser-primary-alb](docs/screenshots/06-browser-primary-alb.png)
-
-![07-rds-primary-multi-az](docs/screenshots/07-rds-primary-multi-az.png)
-
-![08-dynamodb-global-table](docs/screenshots/08-dynamodb-global-table.png)
-
-### Scalability (Day 2)
+### Scalability 
 
 - ASG target tracking policy created (`capstone-web-scaling-policy`)
 - Auto-created CloudWatch alarms (TargetTracking AlarmHigh/AlarmLow)
