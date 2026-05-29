@@ -14,8 +14,10 @@ This project implements a resilient AWS architecture that:
 - Provides **observability** using **CloudWatch dashboard + alarms**.
 
 ## Architecture (Logical)
+<img width="1081" height="761" alt="Untitled Diagram drawio" src="https://github.com/user-attachments/assets/c70b6b27-b79b-4649-a64c-940ad092a6d3" />
 
 ![Architecture Diagram](docs/architecture-diagram.png)
+
 
 | Tier | Services | Resilience / Scaling mechanism |
 | --- | --- | --- |
@@ -30,10 +32,14 @@ This project implements a resilient AWS architecture that:
 ## Live Endpoints
 
 - **Primary ALB (eu-west-1):** `http://capstone-alb-1119147291.eu-west-1.elb.amazonaws.com`
-- **DR ALB (eu-central-1):** `http://capstone-alb-dr-1933974459.eu-central-1.elb.amazonaws.com`
-- **RDS Endpoint (Primary):** `capstone-mysql-primary.cb2wywyq61to.eu-west-1.rds.amazonaws.com`
 
-## Evidence (Screenshots)
+<img width="1919" height="1022" alt="Screenshot 2026-05-29 095933" src="https://github.com/user-attachments/assets/431a25d0-1c4b-4d68-8fb6-ab346ff67921" />
+
+- **DR ALB (eu-central-1):** `http://capstone-alb-dr-1933974459.eu-central-1.elb.amazonaws.com`
+  
+<img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/d7adcdcc-60af-417e-b186-f079b0e94f2f" />
+
+- **RDS Endpoint (Primary):** `capstone-mysql-primary.cb2wywyq61to.eu-west-1.rds.amazonaws.com`
 
 Place your screenshots under `docs/screenshots/` and reference them here.
 
