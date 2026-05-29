@@ -187,24 +187,17 @@ Mapping to services:
 
 #### Failover simulation evidence
 
-During a failover drill, the Route 53 primary health check was forced to fail (for example, by changing the health check path to `/does-not-exist`) to trigger automatic DNS failover to the DR ALB.
+During a failover drill, the Route 53 primary health check was forced to fail by changing the health check path to `/does-not-exist`) to trigger automatic DNS failover to the DR ALB.
 
-Fill this in using your test:
 
-- **Failover started at (timestamp):** ___
-- **DR serving confirmed at (timestamp):** ___
-- **Observed downtime:** ___ (minutes/seconds)
-- **Observed data loss:** ___ (should be within RPO)
 
-![17-dr-vpc-subnets](docs/screenshots/17-dr-vpc-subnets.png)
-
-![18-dr-alb](docs/screenshots/18-dr-alb.png)
-
-![19-browser-dr-alb](docs/screenshots/19-browser-dr-alb.png)
-
-![20-rds-dr-replica](docs/screenshots/20-rds-dr-replica.png)
-
-![21-route53-failover-records](docs/screenshots/21-route53-failover-records.png)
+- **Failover started at
+  <img width="1919" height="1022" alt="Screenshot 2026-05-29 140502" src="https://github.com/user-attachments/assets/10247c6d-ffac-4de6-befc-a8e5b2ad757e" />
+- **DR serving confirmed
+  <img width="1919" height="1079" alt="Screenshot 2026-05-29 141711" src="https://github.com/user-attachments/assets/1161bc4c-7e8e-42c9-9281-c7c0e9199505" />
+ 
+- **Observed downtime:**
+  <img width="1919" height="1079" alt="Screenshot 2026-05-29 140939" src="https://github.com/user-attachments/assets/c8579053-b1ab-4571-8825-46eccd27ce70" />
 
 ### Observability (Day 4)
 
