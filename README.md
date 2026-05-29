@@ -18,7 +18,6 @@ This project implements a resilient AWS architecture that:
 
 
 
-
 | Tier | Services | Resilience / Scaling mechanism |
 | --- | --- | --- |
 | Edge | Application Load Balancer (primary + DR) | Multi-AZ ALBs, Route 53 failover routing |
@@ -28,6 +27,7 @@ This project implements a resilient AWS architecture that:
 | Async / Worker | SQS + ECS Fargate service | Application Auto Scaling based on SQS depth |
 | State | DynamoDB Global Table | Cross-region sync `eu-west-1` ↔ `eu-central-1` |
 | Observability | CloudWatch dashboard + alarms | Central monitoring + alerting |
+
 
 ## Live Endpoints
 
@@ -51,7 +51,9 @@ This project implements a resilient AWS architecture that:
 
 
 - ALB created and healthy
-  <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/7b1c7e26-3103-432a-bdab-b2df880ed199" />
+  
+  <img width="1919" height="960" alt="Screenshot 2026-05-29 094750" src="https://github.com/user-attachments/assets/931c3070-4490-4139-b034-70c8b808e22f" />
+
 
 - ASG created with 2 instances across 2 AZs
   <img width="1919" height="960" alt="Screenshot 2026-05-29 095505" src="https://github.com/user-attachments/assets/a6147c3d-b709-4a95-9ded-8ad82fff4cbb" />
@@ -118,33 +120,35 @@ ElastiCache Redis is used to cache hot / frequently-read data (e.g., session loo
 
 #### Load test summary 
 
-observations/screenshots:
+observations
 
 - **Web tier start:** ASG desired capacity = 2
-- **Web tier peak:** ASG desired capacity reached: ___ (e.g., 4 or 6)
+- **Web tier peak:** ASG desired capacity reached: 4
 - **Scale-out trigger:** Target tracking policy on `ALBRequestCountPerTarget`
-- **Scale-in behavior:** Returned to 2 instances after load stopped in ~___ minutes
+- **Scale-in behavior:** Returned to 2 instances after load stopped in ~ about 10 minutes
 
 - **Worker tier start:** ECS desired tasks = 1
-- **Worker tier peak:** ECS desired tasks reached: ___
+- **Worker tier peak:** ECS desired tasks reached: 60
 - **Scale-out trigger:** SQS `ApproximateNumberOfMessagesVisible` target tracking
-- **Scale-in behavior:** Returned to 1 task after queue drained/purged in ~___ minutes
+- **Scale-in behavior:** Returned to 1 task after queue drained/purged in about 10 minutes
 
-![09-asg-scaling-policy](docs/screenshots/09-asg-scaling-policy.png)
+![10-asg-activity-scale-out]
+<img width="1908" height="960" alt="image" src="https://github.com/user-attachments/assets/d49c2e0c-3e2e-4b0a-9dae-ac1e22056f61" />
 
-![10-asg-activity-scale-out](docs/screenshots/10-asg-activity-scale-out.png)
+![11-ec2-scale-out]
+<img width="1910" height="945" alt="image" src="https://github.com/user-attachments/assets/40e85099-5c07-42aa-b52d-2493a5b6d105" />
 
-![11-ec2-scale-out](docs/screenshots/11-ec2-scale-out.png)
+![13-redis-replication-group]
 
-![12-cloudwatch-alarmhigh](docs/screenshots/12-cloudwatch-alarmhigh.png)
+<img width="1914" height="850" alt="image" src="https://github.com/user-attachments/assets/14ee1658-71a3-4a9c-b805-5136b8ef083c" />
 
-![13-redis-replication-group](docs/screenshots/13-redis-replication-group.png)
+![14-sqs-queues]
 
-![14-sqs-queues](docs/screenshots/14-sqs-queues.png)
+<img width="1911" height="956" alt="image" src="https://github.com/user-attachments/assets/a099dd52-036b-4519-a3e2-7c72d5958fc1" />
 
-![15-ecs-service](docs/screenshots/15-ecs-service.png)
+![16-ecs-tasks-scale-out])
+<img width="1907" height="957" alt="image" src="https://github.com/user-attachments/assets/6efd4d18-9a37-4c8c-8296-72d732d9b493" />
 
-![16-ecs-tasks-scale-out](docs/screenshots/16-ecs-tasks-scale-out.png)
 
 ### Disaster Recovery (Day 3)
 
