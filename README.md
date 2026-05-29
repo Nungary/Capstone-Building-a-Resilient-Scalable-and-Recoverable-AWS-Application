@@ -150,7 +150,7 @@ observations
 <img width="1907" height="957" alt="image" src="https://github.com/user-attachments/assets/6efd4d18-9a37-4c8c-8296-72d732d9b493" />
 
 
-### Disaster Recovery (Day 3)
+### Disaster Recovery 
 
 #### RTO / RPO
 
@@ -163,13 +163,27 @@ Mapping to services:
 - **RPO support:** DynamoDB Global Tables (near-real-time replication) + RDS cross-region read replica lag monitored.
 
 - DR default VPC + DR security groups
+  <img width="1912" height="955" alt="image" src="https://github.com/user-attachments/assets/fe2864a7-2f5a-47bb-9216-c626cc3b010e" />
+
 - DR ALB created and serving
+  <img width="1915" height="959" alt="image" src="https://github.com/user-attachments/assets/425b1eb5-8985-4678-9d2b-ed649a4eb913" />
+
 - DR ASG warm standby (min/desired = 1)
+  <img width="1907" height="958" alt="image" src="https://github.com/user-attachments/assets/3d714ef2-ec39-4618-9c2a-7999821140bb" />
+
 - DR browser proof: DR ALB serves the nginx page including Instance ID + AZ
+  <img width="1919" height="1024" alt="Screenshot 2026-05-29 111002" src="https://github.com/user-attachments/assets/c039ce86-99e1-4360-9522-cc6da1453abf" />
+
 - RDS cross-region read replica creation + status (eventually `available`)
+  <img width="1908" height="954" alt="image" src="https://github.com/user-attachments/assets/de51d735-69b8-41b4-b3ff-19d0a269159c" />
+
 - Route 53 failover records:
   - `app.capstone.local` PRIMARY → primary ALB (with health check)
+    <img width="1906" height="848" alt="image" src="https://github.com/user-attachments/assets/455c139c-05f2-49f8-a959-60cfe84e213c" />
+
   - `app.capstone.local` SECONDARY → DR ALB
+    <img width="1914" height="952" alt="image" src="https://github.com/user-attachments/assets/da4476a8-49e6-4880-9393-cd140bc57d2c" />
+
 
 #### Failover simulation evidence
 
