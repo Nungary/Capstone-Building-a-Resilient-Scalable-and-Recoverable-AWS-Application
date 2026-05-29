@@ -1,0 +1,82 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          [ "AWS/ApplicationELB", "RequestCount", { "stat": "Sum", "label": "ALB Requests" } ],
+          [ ".", "HTTPCode_Target_5XX_Count", { "stat": "Sum", "label": "5xx Errors" } ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "region": "eu-west-1",
+        "title": "ALB - Requests & Errors"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          [ "AWS/AutoScaling", "GroupDesiredCapacity", { "stat": "Average", "label": "Desired" } ],
+          [ ".", "GroupInServiceInstances", { "stat": "Average", "label": "In Service" } ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "region": "eu-west-1",
+        "title": "ASG - Capacity"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          [ "AWS/RDS", "CPUUtilization", { "stat": "Average", "label": "CPU %" } ],
+          [ ".", "DatabaseConnections", { "stat": "Average", "label": "Connections" } ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "region": "eu-west-1",
+        "title": "RDS - Performance"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          [ "AWS/SQS", "ApproximateNumberOfMessagesVisible", { "stat": "Average", "label": "Messages in Queue" } ],
+          [ ".", "ApproximateAgeOfOldestMessage", { "stat": "Maximum", "label": "Oldest Message Age (s)" } ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "region": "eu-west-1",
+        "title": "SQS - Queue Depth & Age"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          [ "AWS/ECS", "CPUUtilization", { "stat": "Average", "label": "Worker CPU %" } ],
+          [ ".", "MemoryUtilization", { "stat": "Average", "label": "Worker Memory %" } ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "region": "eu-west-1",
+        "title": "ECS Fargate - Worker Performance"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          [ "AWS/ElastiCache", "CPUUtilization", { "stat": "Average", "label": "Redis CPU %" } ],
+          [ ".", "NetworkBytesIn", { "stat": "Sum", "label": "Network In" } ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "region": "eu-west-1",
+        "title": "ElastiCache Redis - Performance"
+      }
+    }
+  ]
+}
