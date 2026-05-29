@@ -190,6 +190,8 @@ Mapping to services:
 During a failover drill, the Route 53 primary health check was forced to fail by changing the health check path to `/does-not-exist`) to trigger automatic DNS failover to the DR ALB.
 
 
+- Before Failover
+  <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/63a79208-8af4-4ae1-9660-af33ac480e87" />
 
 - **Failover started at
   <img width="1919" height="1022" alt="Screenshot 2026-05-29 140502" src="https://github.com/user-attachments/assets/10247c6d-ffac-4de6-befc-a8e5b2ad757e" />
